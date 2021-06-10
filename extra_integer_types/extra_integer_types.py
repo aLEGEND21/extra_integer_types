@@ -93,4 +93,42 @@ class Composite(object):
                 if not num:
                     self._val = _
                 return _
-        
+
+
+
+class Odd(object):
+
+    
+    def __init__(self, num):
+        self._val = int(num)
+        if not self.isOdd(self._val):
+            raise TypeError(f'{self._val} is not an odd number')
+    
+
+    def isOdd(self, num):
+        if num % 2 == 0:
+            return False
+        return True
+    
+
+    def nextOddNum(self, num=None):
+        if not num:
+            _ = self._val
+        else:
+            _ = self._val
+        _ += 2
+        if not num:
+            self._val = _
+        return _
+    
+    
+    def prevOddNum(self, num=None):
+        if not num:
+            _ = self._val
+        else:
+            _ = self._val
+        _ -= 2
+        if not num:
+            self._val = _
+        return _
+    
