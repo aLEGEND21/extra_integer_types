@@ -105,6 +105,10 @@ class Odd(object):
             raise TypeError(f'{self._val} is not an odd number')
     
 
+    def __repr__(self):
+        return str(self._val)
+
+
     def isOdd(self, num):
         if num % 2 == 0:
             return False
