@@ -1,32 +1,96 @@
-class prime(object):
+class Prime(object):
+    
 
     def __init__(self, num):
-        self.num = int(num) #This will throw an error if an integer is not provided
-        if not self.isPrime(self.num):
-            raise TypeError(f'{self.num} is not a prime number')
+        self._val = int(num)
+        if not self.isPrime(self._val):
+            raise TypeError(f'{self._val} is not a prime number')
+
     
+    def __repr__(self):
+        return str(self._val)
+
+
     def isPrime(self, num):
-        for i in range(1, num):
+        for i in range(2, num-1):
+            if num % i == 0:
+                return False
+        return True
+
+
+    def nextPrime(self, num=None):
+        if not num:
+            _ = self._val
+        else:
+            _ = num
+        while True:
+            _ += 1
+            if self.isPrime(_):
+                if not num:
+                    self._val = _
+                return _
+
+
+    def prevPrime(self, num=None):
+        if not num:
+            _ = self._val
+        else:
+            _ = num
+        if _ == 0:
+            raise SyntaxError(f'{_} is the lowest prime number')
+        while True:
+            _ -= 1
+            if self.isPrime(_):
+                if not num:
+                    self._val = _
+                return _
+
+
+
+class Composite(object):
+
+
+    def __init__(self, num):
+        self._val = int(num)
+        if not self.isComposite(self._val):
+            raise TypeError(f'{self._val} is not a composite number')
+    
+
+    def __repr__(self):
+        return str(self._val)
+    
+
+    def isComposite(self, num):
+        for i in range(2, num-1):
             if num % i == 0:
                 return True
         return False
+    
 
-    def nextPrime(self):
-        num = self.num
+    def nextComposite(self, num=None):
+        if not num:
+            _ = self._val
+        else:
+            _ = num
         while True:
-            num += 1
-            if self.isPrime(num):
-                self.num = num
-                return self.num
+            _ += 1
+            if self.isComposite(_):
+                if not num:
+                    self._val = _
+                return _
 
-    def prevPrime(self):
-        if self.num == 0:
-            raise SyntaxError(f'{self.num} is the lowest prime number')
-            return
-        num = self.num
+
+    def prevComposite(self, num=None):
+        if not num:
+            _ = self._val
+        else:
+            _ = num
+        if _ == 0:
+            raise SyntaxError(f'{_} is the lowest composite number')
         while True:
-            num -= 1
-            if self.isPrime(num):
-                self.num = num
-                return self.num
-
+            _ -= 1
+            if self.isComposite(_):
+                if not num:
+                    self._val = _
+                return _
+        
