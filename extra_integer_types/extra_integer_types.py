@@ -115,7 +115,7 @@ class Odd(object):
         return True
     
 
-    def nextOddNum(self, num=None):
+    def nextOdd(self, num=None):
         if not num:
             _ = self._val
         else:
@@ -126,7 +126,49 @@ class Odd(object):
         return _
     
     
-    def prevOddNum(self, num=None):
+    def prevOdd(self, num=None):
+        if not num:
+            _ = self._val
+        else:
+            _ = self._val
+        _ -= 2
+        if not num:
+            self._val = _
+        return _
+    
+
+
+class Even(object):
+
+    
+    def __init__(self, num):
+        self._val = int(num)
+        if not self.isEven(self._val):
+            raise TypeError(f'{self._val} is not an even number')
+    
+
+    def __repr__(self):
+        return str(self._val)
+
+
+    def isEven(self, num):
+        if num % 2 == 0:
+            return True
+        return False
+    
+
+    def nextEven(self, num=None):
+        if not num:
+            _ = self._val
+        else:
+            _ = self._val
+        _ += 2
+        if not num:
+            self._val = _
+        return _
+    
+    
+    def prevEven(self, num=None):
         if not num:
             _ = self._val
         else:
